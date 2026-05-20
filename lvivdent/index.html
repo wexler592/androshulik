@@ -105,7 +105,7 @@ h2.section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3.5
 .doctor-card{border-radius:20px;overflow:hidden;border:1px solid var(--border);background:var(--cream);transition:transform .2s,box-shadow .2s}
 .doctor-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
 .doctor-photo{height:260px;background:var(--cream2);display:flex;align-items:center;justify-content:center;color:var(--faint);overflow:hidden}
-.doctor-photo img{width:100%;height:100%;object-fit:cover;object-position:50% 20%;display:block}
+.doctor-photo img{width:100%;height:100%;object-fit:cover;object-position:50% 40%;display:block}
 .doctor-info{padding:1.25rem 1.25rem 1.5rem;border-top:2px solid var(--gold-pale)}
 .doctor-info h3{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:var(--charcoal);margin-bottom:.2rem}
 .doctor-spec{font-size:.72rem;font-weight:500;letter-spacing:.06em;color:var(--gold);text-transform:uppercase;margin-bottom:.4rem;display:block}
@@ -241,10 +241,7 @@ footer ul a:hover{color:var(--gold)}
   </div>
   <div class="hero-visual">
     <div class="hero-img-wrap">
-      <div class="hero-img-placeholder">
-        <svg width="48" height="48" fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="12" cy="12" r="3"/></svg>
-        <span>Фото клініки</span>
-      </div>
+      <img src="photos/clinic1.jpg" alt="Сучасна стоматологія LvivDent">
     </div>
     <div class="hero-badge">
       <div class="hero-badge-icon">🦷</div>
@@ -287,10 +284,49 @@ footer ul a:hover{color:var(--gold)}
   <h2 class="section-title">Лікарі, яким довіряють</h2>
   <p class="section-sub">Кожен спеціаліст — це роки практики, міжнародне навчання і щира турбота про пацієнта.</p>
   <div class="team-grid">
-    <div class="doctor-card"><div class="doctor-photo"><svg width="40" height="40" fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg></div><div class="doctor-info"><h3>Олена Коваль</h3><span class="doctor-spec">Терапевт · Головний лікар</span><span class="doctor-exp">Стаж: 18 років</span></div></div>
-    <div class="doctor-card"><div class="doctor-photo"><svg width="40" height="40" fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg></div><div class="doctor-info"><h3>Андрій Мельник</h3><span class="doctor-spec">Хірург · Імплантолог</span><span class="doctor-exp">Стаж: 14 років</span></div></div>
-    <div class="doctor-card"><div class="doctor-photo"><svg width="40" height="40" fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg></div><div class="doctor-info"><h3>Марія Савчук</h3><span class="doctor-spec">Ортодонт</span><span class="doctor-exp">Стаж: 10 років</span></div></div>
-    <div class="doctor-card"><div class="doctor-photo"><svg width="40" height="40" fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg></div><div class="doctor-info"><h3>Ігор Петренко</h3><span class="doctor-spec">Естетична стоматологія</span><span class="doctor-exp">Стаж: 12 років</span></div></div>
+    <div class="doctor-card">
+      <div class="doctor-photo">
+        <img src="photos/doctor1.jpg" alt="Олена Коваль">
+      </div>
+      <div class="doctor-info">
+        <h3>Олена Коваль</h3>
+        <span class="doctor-spec">Терапевт · Головний лікар</span>
+        <span class="doctor-exp">Стаж: 18 років</span>
+      </div>
+    </div>
+
+    <div class="doctor-card">
+      <div class="doctor-photo">
+        <img src="photos/doctor2.jpg" alt="Андрій Мельник">
+      </div>
+      <div class="doctor-info">
+        <h3>Андрій Мельник</h3>
+        <span class="doctor-spec">Хірург · Імплантолог</span>
+        <span class="doctor-exp">Стаж: 14 років</span>
+      </div>
+    </div>
+
+    <div class="doctor-card">
+      <div class="doctor-photo">
+        <img src="photos/doctor3.jpg" alt="Марія Савчук">
+      </div>
+      <div class="doctor-info">
+        <h3>Марія Савчук</h3>
+        <span class="doctor-spec">Ортодонт</span>
+        <span class="doctor-exp">Стаж: 10 років</span>
+      </div>
+    </div>
+
+    <div class="doctor-card">
+      <div class="doctor-photo">
+        <img src="photos/doctor4.jpg" alt="Ігор Петренко">
+      </div>
+      <div class="doctor-info">
+        <h3>Ігор Петренко</h3>
+        <span class="doctor-spec">Естетична стоматологія</span>
+        <span class="doctor-exp">Стаж: 12 років</span>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -396,7 +432,7 @@ document.getElementById('booking-form').addEventListener('submit', async functio
   btn.disabled = true;
   btn.textContent = 'Надсилаємо...';
   try {
-    const r = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
+    const r = await fetch('https://formspree.io/f/xkoeopbq', {
       method: 'POST',
       body: new FormData(this),
       headers: { 'Accept': 'application/json' }
