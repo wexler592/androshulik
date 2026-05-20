@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- SEO (базові; JS динамічно оновлює для окремих статей) -->
+  <title id="pageTitle">Блог — Стоматологія Шевченко | Корисні статті про здоров'я зубів</title>
+  <meta name="description" id="pageDesc" content="Корисні статті про стоматологію від лікаря Шевченко О.В.: профілактика, відбілювання, імплантація, ортодонтія. Читайте та бережіть своє здоров'я!">
+  <meta name="keywords" content="стоматологія блог, здоров'я зубів, профілактика карієсу, відбілювання зубів, ортодонтія статті">
+  <link rel="canonical" href="https://stomatologia-shevchenko.ua/blog.html">
+
+  <!-- Open Graph -->
+  <meta property="og:type"        content="website">
+  <meta property="og:title"       id="ogTitle" content="Блог — Стоматологія Шевченко">
+  <meta property="og:description" id="ogDesc"  content="Корисні статті про здоров'я зубів від досвідченого лікаря.">
+  <meta property="og:image"       id="ogImage" content="photos/clinic1.jpg">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/blog.css">
+</head>
+<body>
+
+  <!-- ════════════════════════════════════════════════════
+       HEADER
+  ════════════════════════════════════════════════════ -->
+  <header class="header" id="header">
+    <div class="container">
+      <div class="header__inner">
+        <a href="index.html" class="logo" aria-label="Стоматологія Шевченко — Головна">
+          <div class="logo__icon">
+            <svg viewBox="0 0 40 40" fill="none" aria-hidden="true">
+              <path d="M20 5C13.5 5 9 10 9 16c0 4.5 2 8.5 5.5 11L15.5 35h9l1-8C29 24.5 31 20.5 31 16c0-6-4.5-11-11-11z" fill="currentColor" opacity="0.12"/>
+              <path d="M20 7C14.5 7 11 11.5 11 16c0 4 1.8 7.8 4.8 10.2L17 34h6l1.2-7.8C27.2 23.8 29 20 29 16c0-4.5-3.5-9-9-9z" stroke="currentColor" stroke-width="1.5" fill="none"/>
+              <line x1="20" y1="15" x2="20" y2="27" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="logo__text">
+            <span class="logo__name">Стоматологія</span>
+            <span class="logo__surname">Шевченко</span>
+          </div>
+        </a>
+
+        <nav class="nav" aria-label="Головна навігація">
+          <ul class="nav__list">
+            <li><a href="index.html#services" class="nav__link">Послуги</a></li>
+            <li><a href="index.html#prices"   class="nav__link">Ціни</a></li>
+            <li><a href="index.html#doctor"   class="nav__link">Про лікаря</a></li>
+            <li><a href="blog.html"           class="nav__link active" aria-current="page">Блог</a></li>
+            <li><a href="index.html#reviews"  class="nav__link">Відгуки</a></li>
+          </ul>
+        </nav>
+
+        <div class="header__cta">
+          <a href="tel:+380441234567" class="header__phone" aria-label="Зателефонувати">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" width="16" height="16">
+              <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81a19.79 19.79 0 01-3.07-8.68A2 2 0 012 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+            </svg>
+            +380 44 123-45-67
+          </a>
+          <a href="index.html#appointment" class="btn btn--primary">Записатись</a>
+        </div>
+
+        <button class="burger" id="burgerBtn"
+                aria-label="Відкрити меню" aria-expanded="false" aria-controls="mobileMenu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+
+    <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+      <nav aria-label="Мобільна навігація">
+        <ul class="mobile-menu__list">
+          <li><a href="index.html#services" class="mobile-menu__link">Послуги</a></li>
+          <li><a href="index.html#prices"   class="mobile-menu__link">Ціни</a></li>
+          <li><a href="index.html#doctor"   class="mobile-menu__link">Про лікаря</a></li>
+          <li><a href="blog.html"           class="mobile-menu__link">Блог</a></li>
+          <li><a href="index.html#reviews"  class="mobile-menu__link">Відгуки</a></li>
+        </ul>
+        <div class="mobile-menu__cta">
+          <a href="tel:+380441234567" class="btn btn--outline">+380 44 123-45-67</a>
+          <a href="index.html#appointment" class="btn btn--primary">Записатись</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- Blog Hero -->
+    <div class="blog-hero">
+      <div class="container">
+        <nav class="blog-hero__breadcrumb" aria-label="Шлях навігації">
+          <a href="index.html">Головна</a>
+          <span class="blog-hero__breadcrumb-sep" aria-hidden="true">/</span>
+          <span aria-current="page">Блог</span>
+        </nav>
+        <h1 class="blog-hero__title">Блог клініки</h1>
+        <p class="blog-hero__subtitle">Корисні статті про здоров'я зубів, сучасні методи лікування та поради від лікаря.</p>
+      </div>
+    </div>
+
+    <!-- Blog Content -->
+    <div class="blog-layout">
+      <div class="container">
+        <div class="blog-inner">
+
+          <!-- ── Main: Posts ──────────────────────────── -->
+          <section aria-labelledby="postsHeading">
+            <h2 id="postsHeading" class="visually-hidden">Статті</h2>
+
+            <!-- Search results message (shown when search is active) -->
+            <div class="search-results-msg" id="searchMsg" hidden>
+              <span id="searchMsgText"></span>
+              <button class="search-clear" id="searchClear" aria-label="Скинути пошук">Скинути</button>
+            </div>
+
+            <!-- Posts grid — наповнюється через blog.js -->
+            <div class="posts-grid" id="postsGrid" role="list" aria-live="polite" aria-label="Список статей"></div>
+          </section>
+
+          <!-- ── Sidebar ──────────────────────────────── -->
+          <aside class="blog-sidebar" aria-label="Додаткові блоки">
+
+            <!-- Search -->
+            <div class="sidebar-widget">
+              <h2 class="sidebar-widget__title">Пошук</h2>
+              <form class="sidebar-search" role="search" id="searchForm" aria-label="Пошук по блогу">
+                <label for="searchInput" class="visually-hidden">Пошук статей</label>
+                <input type="search" id="searchInput" class="sidebar-search__input"
+                       placeholder="Введіть запит…" autocomplete="off">
+                <button type="submit" class="sidebar-search__btn" aria-label="Знайти">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                  </svg>
+                </button>
+              </form>
+            </div>
+
+            <!-- Popular posts — наповнюється через blog.js -->
+            <div class="sidebar-widget">
+              <h2 class="sidebar-widget__title">Популярні статті</h2>
+              <ul class="popular-list" id="popularList" aria-label="Популярні статті"></ul>
+            </div>
+
+            <!-- CTA widget -->
+            <div class="sidebar-widget" style="background: var(--clr-primary); border-color: var(--clr-primary); color: #fff;">
+              <h2 class="sidebar-widget__title" style="color:#fff; border-color: rgba(255,255,255,.2);">Є запитання?</h2>
+              <p style="font-size:.9375rem; margin-bottom: 20px; color:rgba(255,255,255,.85);">
+                Запишіться на безкоштовну первинну консультацію до лікаря.
+              </p>
+              <a href="index.html#appointment" class="btn btn--ghost btn--full"
+                 style="border-color:rgba(255,255,255,.5);">Записатись</a>
+            </div>
+
+          </aside>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ════════════════════════════════════════════════════
+       ARTICLE MODAL (рендериться через JS)
+  ════════════════════════════════════════════════════ -->
+  <div id="articleOverlay" hidden></div>
+
+  <!-- ════════════════════════════════════════════════════
+       FOOTER
+  ════════════════════════════════════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <a href="index.html" class="logo" aria-label="Стоматологія Шевченко">
+            <div class="logo__icon">
+              <svg viewBox="0 0 40 40" fill="none" aria-hidden="true">
+                <path d="M20 5C13.5 5 9 10 9 16c0 4.5 2 8.5 5.5 11L15.5 35h9l1-8C29 24.5 31 20.5 31 16c0-6-4.5-11-11-11z" fill="currentColor" opacity="0.2"/>
+                <path d="M20 7C14.5 7 11 11.5 11 16c0 4 1.8 7.8 4.8 10.2L17 34h6l1.2-7.8C27.2 23.8 29 20 29 16c0-4.5-3.5-9-9-9z" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                <line x1="20" y1="15" x2="20" y2="27" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="logo__text">
+              <span class="logo__name">Стоматологія</span>
+              <span class="logo__surname">Шевченко</span>
+            </div>
+          </a>
+          <p class="footer__tagline">Ваша посмішка — наша репутація.</p>
+        </div>
+
+        <nav class="footer__nav" aria-label="Нижня навігація">
+          <h3 class="footer__heading">Навігація</h3>
+          <ul>
+            <li><a href="index.html#services">Послуги</a></li>
+            <li><a href="index.html#prices">Ціни</a></li>
+            <li><a href="index.html#doctor">Про лікаря</a></li>
+            <li><a href="blog.html">Блог</a></li>
+            <li><a href="index.html#appointment">Записатись</a></li>
+          </ul>
+        </nav>
+
+        <address class="footer__contacts">
+          <h3 class="footer__heading">Контакти</h3>
+          <ul>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span>вул. Хрещатик, 22, Київ</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81a19.79 19.79 0 01-3.07-8.68A2 2 0 012 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+              <a href="tel:+380441234567">+380 44 123-45-67</a>
+            </li>
+          </ul>
+        </address>
+
+        <div class="footer__hours">
+          <h3 class="footer__heading">Години роботи</h3>
+          <ul>
+            <li><span>Пн–Пт</span><strong>09:00 – 20:00</strong></li>
+            <li><span>Субота</span><strong>10:00 – 17:00</strong></li>
+            <li><span>Неділя</span><strong>Вихідний</strong></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <p class="footer__copy">&copy; 2026 Стоматологія Шевченко. Усі права захищені.</p>
+        <div class="footer__legal">
+          <a href="#">Політика конфіденційності</a>
+          <a href="admin.html" class="footer__admin-link">Адмін</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/BlogManager.js"></script>
+  <script src="js/blog.js"></script>
+</body>
+</html>

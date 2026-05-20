@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Адміністратор — Стоматологія Шевченко</title>
+  <meta name="robots" content="noindex, nofollow">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+
+  <!-- ════════════════════════════════════════════════════
+       ЕКРАН ВХОДУ (показується, якщо не авторизований)
+  ════════════════════════════════════════════════════ -->
+  <div class="admin-login-page" id="loginPage">
+    <div class="login-box">
+
+      <div class="login-box__logo">
+        <div class="logo__icon" style="width:44px; height:44px; color:var(--clr-primary);">
+          <svg viewBox="0 0 40 40" fill="none" aria-hidden="true">
+            <path d="M20 5C13.5 5 9 10 9 16c0 4.5 2 8.5 5.5 11L15.5 35h9l1-8C29 24.5 31 20.5 31 16c0-6-4.5-11-11-11z" fill="currentColor" opacity="0.12"/>
+            <path d="M20 7C14.5 7 11 11.5 11 16c0 4 1.8 7.8 4.8 10.2L17 34h6l1.2-7.8C27.2 23.8 29 20 29 16c0-4.5-3.5-9-9-9z" stroke="currentColor" stroke-width="1.5" fill="none"/>
+            <line x1="20" y1="15" x2="20" y2="27" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+      </div>
+
+      <h1 class="login-box__title">Вхід в адмін-панель</h1>
+      <p class="login-box__subtitle">Стоматологія Шевченко</p>
+
+      <div class="login-error" id="loginError" role="alert" aria-live="assertive">
+        Невірний пароль. Спробуйте ще раз.
+      </div>
+
+      <form id="loginForm" novalidate aria-label="Форма входу">
+        <div class="form-group">
+          <label for="loginPassword" class="form-label">Пароль</label>
+          <input type="password" id="loginPassword" class="form-input"
+                 placeholder="Введіть пароль" required autocomplete="current-password">
+          <span class="form-error" id="loginPassError" role="alert" aria-live="polite"></span>
+        </div>
+        <button type="submit" class="btn btn--primary btn--full" style="margin-top:8px;">
+          Увійти
+        </button>
+      </form>
+
+      <p class="login-hint">Демо-пароль: <code>admin2026</code></p>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════════════
+       АДМІН-ПАНЕЛЬ (показується після авторизації)
+  ════════════════════════════════════════════════════ -->
+  <div class="admin-page" id="adminPage" hidden>
+
+    <!-- Top Bar -->
+    <header class="admin-topbar" role="banner">
+      <div class="admin-topbar__brand">
+        <div class="logo__icon" style="width:32px;height:32px;color:var(--clr-accent);">
+          <svg viewBox="0 0 40 40" fill="none" aria-hidden="true">
+            <path d="M20 5C13.5 5 9 10 9 16c0 4.5 2 8.5 5.5 11L15.5 35h9l1-8C29 24.5 31 20.5 31 16c0-6-4.5-11-11-11z" fill="currentColor" opacity="0.2"/>
+            <path d="M20 7C14.5 7 11 11.5 11 16c0 4 1.8 7.8 4.8 10.2L17 34h6l1.2-7.8C27.2 23.8 29 20 29 16c0-4.5-3.5-9-9-9z" stroke="currentColor" stroke-width="1.5" fill="none"/>
+          </svg>
+        </div>
+        <div class="logo__text">
+          <span class="logo__name">Стоматологія</span>
+          <span class="logo__surname">Шевченко</span>
+        </div>
+      </div>
+      <div class="admin-topbar__right">
+        <span class="admin-topbar__badge">Адміністратор</span>
+        <span class="admin-topbar__user" id="topbarUser"></span>
+        <a href="index.html" class="logout-btn" style="text-decoration:none;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          Сайт
+        </a>
+        <button class="logout-btn" id="logoutBtn" aria-label="Вийти з адмін-панелі">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4M16 17l5-5-5-5M21 12H9"/>
+          </svg>
+          Вийти
+        </button>
+      </div>
+    </header>
+
+    <!-- Content -->
+    <main class="admin-content" id="adminContent">
+
+      <!-- Stats -->
+      <div class="admin-stats" role="region" aria-label="Статистика">
+        <div class="stat-card">
+          <span class="stat-card__value" id="statTotal">0</span>
+          <span class="stat-card__label">Всього статей</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-card__value" id="statPublished">0</span>
+          <span class="stat-card__label">Опублікованих</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-card__value" id="statDraft">0</span>
+          <span class="stat-card__label">Чернеток</span>
+        </div>
+      </div>
+
+      <!-- Posts Table -->
+      <section class="admin-panel" aria-labelledby="tableHeading">
+        <div class="admin-panel__header">
+          <h2 class="admin-panel__title" id="tableHeading">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+            Публікації
+          </h2>
+          <button class="btn btn--primary btn--sm" id="newPostBtn" aria-label="Створити нову статтю">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" width="14" height="14"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            Нова стаття
+          </button>
+        </div>
+        <div class="admin-panel__body">
+          <div class="posts-table-wrap">
+            <table class="posts-table" id="postsTable" aria-label="Таблиця публікацій">
+              <thead>
+                <tr>
+                  <th scope="col">Зображення</th>
+                  <th scope="col">Заголовок</th>
+                  <th scope="col">Автор</th>
+                  <th scope="col">Дата</th>
+                  <th scope="col">Статус</th>
+                  <th scope="col">Дії</th>
+                </tr>
+              </thead>
+              <tbody id="postsTableBody">
+                <!-- наповнюється через admin.js -->
+              </tbody>
+            </table>
+            <p class="table-empty" id="tableEmpty" hidden>Немає жодної статті. Створіть першу!</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Post Form -->
+      <section class="admin-panel" id="postFormSection" aria-labelledby="formHeading">
+        <div class="admin-panel__header">
+          <h2 class="admin-panel__title" id="formHeading">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+            <span id="formTitle">Нова стаття</span>
+          </h2>
+        </div>
+        <div class="admin-panel__body">
+
+          <div class="edit-mode-banner" id="editBanner" role="status">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            Режим редагування: <strong id="editingPostTitle"></strong>
+          </div>
+
+          <form class="post-form" id="postForm" novalidate aria-label="Форма публікації">
+
+            <div class="form-group">
+              <label for="postTitle" class="admin-form-label">Заголовок статті <span class="req">*</span></label>
+              <input type="text" id="postTitle" class="admin-form-input"
+                     placeholder="Напр.: Чому важливо чистити зуби двічі на день"
+                     maxlength="160" required aria-required="true">
+              <span class="admin-form-error" id="titleError"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="postExcerpt" class="admin-form-label">Короткий анонс <span class="req">*</span></label>
+              <textarea id="postExcerpt" class="admin-form-textarea"
+                        placeholder="До 300 символів. Відображається на картці статті в блозі."
+                        maxlength="300" rows="3" required aria-required="true"></textarea>
+              <span class="admin-form-error" id="excerptError"></span>
+              <p class="admin-form-hint">Ліміт: <span id="excerptCount">0</span> / 300 символів</p>
+            </div>
+
+            <div class="form-group">
+              <label for="postContent" class="admin-form-label">Повний текст статті <span class="req">*</span></label>
+              <textarea id="postContent" class="admin-form-textarea admin-form-textarea--lg"
+                        placeholder="Повний текст статті. Підтримуються перенесення рядків."
+                        rows="10" required aria-required="true"></textarea>
+              <span class="admin-form-error" id="contentError"></span>
+            </div>
+
+            <div class="form-row-2">
+              <div class="form-group">
+                <label for="postDate" class="admin-form-label">Дата публікації <span class="req">*</span></label>
+                <input type="date" id="postDate" class="admin-form-input" required aria-required="true">
+                <span class="admin-form-error" id="dateError"></span>
+              </div>
+              <div class="form-group">
+                <label for="postAuthor" class="admin-form-label">Автор</label>
+                <input type="text" id="postAuthor" class="admin-form-input"
+                       placeholder="Лікар Шевченко О.В." value="Лікар Шевченко О.В.">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="postImage" class="admin-form-label">URL зображення</label>
+              <input type="url" id="postImage" class="admin-form-input"
+                     placeholder="https://... або photos/clinic1.jpg">
+              <p class="admin-form-hint">Залиште порожнім для зображення за замовчуванням.</p>
+              <div class="image-preview" id="imagePreview" aria-label="Попередній перегляд зображення">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                <span>Попередній перегляд</span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="admin-form-label" style="display:flex; align-items:center; gap:10px; cursor:pointer;">
+                <input type="checkbox" id="postPublished" checked style="width:18px; height:18px; accent-color:var(--clr-primary);">
+                Опублікувати одразу
+              </label>
+            </div>
+
+            <div class="form-actions">
+              <button type="submit" class="btn btn--primary" id="submitBtn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" width="16" height="16"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                Опублікувати
+              </button>
+              <button type="button" class="btn btn--outline" id="cancelEditBtn" hidden>
+                Скасувати редагування
+              </button>
+              <button type="button" class="btn btn--outline" id="clearFormBtn">
+                Очистити
+              </button>
+            </div>
+
+          </form>
+        </div>
+      </section>
+
+    </main><!-- /admin-content -->
+
+  </div><!-- /admin-page -->
+
+  <!-- ════════════════════════════════════════════════════
+       ДІАЛОГ ПІДТВЕРДЖЕННЯ ВИДАЛЕННЯ
+  ════════════════════════════════════════════════════ -->
+  <div class="confirm-overlay" id="confirmOverlay" hidden role="dialog"
+       aria-modal="true" aria-labelledby="confirmTitle">
+    <div class="confirm-box">
+      <div class="confirm-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a1 1 0 011-1h4a1 1 0 011 1v2"/><line x1="10" y1="11" x2="10" y2="17"/><line x1="14" y1="11" x2="14" y2="17"/>
+        </svg>
+      </div>
+      <h3 id="confirmTitle">Видалити статтю?</h3>
+      <p id="confirmText">Цю дію неможливо скасувати.</p>
+      <div class="confirm-actions">
+        <button class="btn btn--outline" id="confirmCancel">Скасувати</button>
+        <button class="btn btn--primary" id="confirmOk"
+                style="background:var(--clr-err); box-shadow:none;">Видалити</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div class="toast-container" id="toastContainer" aria-live="polite" aria-atomic="true"></div>
+
+  <script src="js/BlogManager.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>
