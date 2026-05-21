@@ -331,10 +331,15 @@
     transition: transform 0.5s cubic-bezier(0.4,0,0.2,1);
   }
   .review-card {
-    min-width: calc(33.33% - 14px); background: white;
-    border-radius: var(--radius-card); padding: 28px 24px;
-    box-shadow: var(--shadow); flex-shrink: 0;
-  }
+  flex: 0 0 calc(33.333% - 14px);
+  max-width: calc(33.333% - 14px); /* Жорстко обмежуємо ширину */
+  background: white;
+  border-radius: var(--radius-card); 
+  padding: 28px 24px;
+  box-shadow: var(--shadow);
+  box-sizing: border-box;
+  word-wrap: break-word; /* Додаємо перенос довгих слів */
+}
   .review-stars { color: #f59e0b; font-size: 18px; margin-bottom: 12px; }
   .review-text { font-size: 15px; color: var(--dark); line-height: 1.7; margin-bottom: 20px; font-style: italic; }
   .review-author { display: flex; align-items: center; gap: 12px; }
